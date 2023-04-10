@@ -11,7 +11,7 @@ import {
 } from '../NavBarUser/NavBarUser.styled';
 
 export const NavBarUser = () => {
-  const { email } = useSelector(selectUser);
+  const { name } = useSelector(selectUser);
   const dispatch = useDispatch();
 
   const onLogOut = () => {
@@ -19,7 +19,7 @@ export const NavBarUser = () => {
   };
   return (
     <UserMenu>
-      <UserEmail>{email}</UserEmail>
+      <UserEmail>Hi {name}, you are logged in</UserEmail>
 
       <LogoutBtn onClick={onLogOut}>Log out</LogoutBtn>
     </UserMenu>
