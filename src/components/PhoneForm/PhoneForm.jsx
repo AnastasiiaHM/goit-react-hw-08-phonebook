@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 
 import { selectContacts } from '../../redux/Contacts/selectors';
-import { setAddContact } from 'redux/operations';
+import { addContact } from 'redux/Contacts/operation';
 import { StyledForm, Input, Label, Button } from './PhoneForm.styled';
 
 export const Form = () => {
@@ -25,7 +25,7 @@ export const Form = () => {
       return alert(`${name} is already in Contacts`);
     }
     const data = { name, number };
-    dispatch(setAddContact(data));
+    dispatch(addContact(data));
     form.reset();
   };
 

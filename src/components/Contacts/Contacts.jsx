@@ -1,12 +1,12 @@
 import { Item } from './ContactsItem';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectFilteredContacts } from '../../redux/Contacts/selectors';
 import { useEffect } from 'react';
-import { fetchAllContacts, setDeleteContacts } from 'redux/operations';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectFilteredContacts } from '../../redax/selectors';
+import { fetchAllContacts, fetchDeleteContact } from '../../redax/operations';
 
 export const Contacts = () => {
   const contactsList = useSelector(selectFilteredContacts);
-  console.log(contactsList);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export const Contacts = () => {
   }, [dispatch]);
 
   const removeContact = id => {
-    dispatch(setDeleteContacts(id));
+    dispatch(fetchDeleteContact(id));
   };
 
   return contactsList.length <= 0 ? (

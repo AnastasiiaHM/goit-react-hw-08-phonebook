@@ -1,37 +1,20 @@
 import { useDispatch } from 'react-redux';
-import { useCallback, useMemo } from 'react';
-import { setFilter } from '../../redux/Contacts/filtersSlice';
-import { Input, Label } from './Filter.styled';
 
-import debounce from 'lodash.debounce';
+import { setFilter } from '../../redax/filterSlice';
+
+import fields from 'components/shared/InputField/fields';
+import { InputField } from '../shared/InputField/InputField';
 
 export const Filter = () => {
   const dispatch = useDispatch();
+  const onChange = e => {
+    const filterValue = e.target.value;
 
-  const onChange = useCallback(
-    e => {
-      const filterValue = e.target.value;
-
-      dispatch(setFilter(filterValue));
-    },
-    [dispatch]
-  );
-  const debouncedChangeHandler = useMemo(
-    () => debounce(onChange, 1000),
-    [onChange]
-  );
-
+    dispatch(setFilter(filterValue));
+  };
   return (
     <div>
-      <Label>
-        Find contacts by name
-        <Input
-          onChange={debouncedChangeHandler}
-          type="text"
-          name="filter"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        />
-      </Label>
+      <InputField onChange={onChange} {...fields.nameFilter} />
     </div>
   );
 };

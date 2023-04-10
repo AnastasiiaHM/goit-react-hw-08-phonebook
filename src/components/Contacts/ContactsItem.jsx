@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 
 import { ListItem, Button } from '../Contacts/ContactsItem.styled';
 
@@ -13,13 +13,13 @@ export const Item = ({ id, name, number, onClick }) => {
   );
 };
 
-Item.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string,
-      number: PropTypes.string,
-    }).isRequired
-  ),
-  onClick: PropTypes.func.isRequired,
-};
+// Item.propTypes = {
+//   contacts: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.string,
+//       name: PropTypes.string,
+//       number: PropTypes.string,
+//     }).isRequired
+//   ),
+//   onClick: PropTypes.func.isRequired,
+// };

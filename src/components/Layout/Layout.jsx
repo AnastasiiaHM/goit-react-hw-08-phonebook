@@ -5,16 +5,15 @@ import AuthMenu from 'components/AuthMenu/AuthMenu';
 import UserMenu from 'components/UserMenu/UserMenu';
 import Navigation from 'components/Navigation/Navigation';
 import { Header } from './Layuot.styled';
-import { useSelector } from 'react-redux';
-import authSelectors from 'redux/Auth/authSelectors';
+import { useAuth } from 'components/hooks/Authhook';
 
 const Layout = () => {
-  const isLoggin = useSelector(authSelectors.getIsLoggin);
+  const { isLoggedIn } = useAuth();
   return (
     <>
       <Header>
         <Navigation />
-        {isLoggin ? <UserMenu /> : <AuthMenu />}
+        {isLoggedIn ? <UserMenu /> : <AuthMenu />}
       </Header>
       <main>
         <Suspense fallback={<Spiner />}>
